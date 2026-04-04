@@ -6,59 +6,60 @@ use Illuminate\Http\Request;
 
 class PacienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
-    }
+        $pacientes = Paciente::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
+        return view('pacientes.index', ['pacientes' => $pacientes]);
+    }
     public function create()
     {
-        //
+        return view('pacientes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        Paciente::create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'telefone' => $request->telefone
+        ]);
+
+        return redirect()->route('paciente.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $paciente = Paciente::find($id);
+        
+        return view('pacientes.show' , ['paciente' => $paciente]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+         $paciente = Paciente::find($id);
+
+         return view('pacientes.edit' , ['paciente' => $paciente]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $paciente = Paciente::find($id);
+
+        $paciente->nome = $request->nome;
+        $paciente->email = $request->email;
+        $paciente->telefone = $request->telefone;
+        
+        $paciente->save();
+
+        return redirect()->route('paciente.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $paciente = Paciente::find($id);
+        $paciente->delete();
+
+        return redirect()->route('paciente.index');
     }
 }
