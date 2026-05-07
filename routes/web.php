@@ -6,7 +6,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ConsultationController;
 
 Route::get('/', function () {
-    return view('patient.index');
+    return redirect('patients');
 });
 
 Route::resource('patients', PatientController::class);

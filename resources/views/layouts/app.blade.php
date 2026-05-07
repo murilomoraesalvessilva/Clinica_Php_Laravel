@@ -30,9 +30,9 @@
 </head>
 <body>
     <nav>
-        <a href="{{ route('patients.index') }}">👤 Pacientes</a>
-        <a href="{{ route('doctors.index') }}">🩺 Médicos</a>
-        <a href="{{ route('consultations.index') }}">📅 Consultas</a>
+        <a href="{{ route('patients.index') }}">Pacientes</a>
+        <a href="{{ route('doctors.index') }}">Médicos</a>
+        <a href="{{ route('consultations.index') }}">Consultas</a>
     </nav>
 
     <div class="container">
